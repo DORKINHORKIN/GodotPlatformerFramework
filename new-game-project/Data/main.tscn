@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://uk3sss3h7j4s"]
+
+[ext_resource type="PackedScene" uid="uid://10dfpxb5ce7y" path="res://Data/Character/character.tscn" id="1_856ue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0od66"]
+radius = 24.0
+
+[node name="Main" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource("1_856ue")]
+position = Vector2(96, 448)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 672, 1152, 672, 1152, 0, 1088, 0, 1088, 512, 64, 512, 64, 0, 0, 0)
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(64, 0, 512, 0, 512, 384, 320, 384, 320, 256, 192, 256, 192, 384, 64, 384)
+
+[node name="CollisionShape2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1088, 0, 512, 0, 512, 64, 1088, 64)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(480, 448)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_0od66")
